@@ -32,7 +32,7 @@ placeing/using those items in the offhand.
 Whether the Supplementaries quiver still renders for this avatar.
 
 ### `FFF:hasSuppQuiver()` -> boolean
-`true` while the avatar's player is wearing a Supplementaries quiver
+`true` while the player is wearing a Supplementaries quiver
 
 ### `FFF:setSuppQuiverVisible(visible)`
 `false` disables the Supplementaries `QuiverLayer`
@@ -102,23 +102,23 @@ by **jess (soup587)**. She gave her permission for me to use it, so I did!
 Whether Create's chain hanging pose still plays for this avatar (default `true`).
 
 #### `FFF:setCreateSkyhookAnimation(play)`
-`false` skips Create's chain hanging animation for this avatar's player.
+`false` skips Create's chain hanging animation for this player.
 
 #### `FFF:getCreateRidingChainConveyor()` -> boolean
-`true` while the avatar's player is riding a Create chain.
+`true` while the player is riding a Create chain.
 
 #### `FFF:getCreateCardboardBox()` -> boolean
 Whether Create's cardboard hiding-as-a-box render is enabled for this avatar (default `true`).
 
 #### `FFF:setCreateCardboardBox(render)`
-`false` stops Create from rendering this avatar's player as a box while sneaking in
+`false` stops Create from rendering this player as a box while sneaking in
 cardboard armor, and hides the matching screen blur overlay.
 
 #### `FFF:getCreateCardboardStealth()` -> boolean
-`true` while the avatar's player is hiding as a box (cardboard armor crouch).
+`true` while the player is hiding as a box (cardboard armor crouch).
 
 #### `FFF:getCreateCarriedVelocity()` -> vector3 | nil
-The contraption velocity at the avatar's player's position, or `nil` when
+The contraption velocity at the player's position, or `nil` when
 the player isn't standing on a contraption.
 
 #### `FFF:isCreateContraptionCarrying()` -> boolean
