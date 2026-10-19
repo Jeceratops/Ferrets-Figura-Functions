@@ -62,7 +62,8 @@ Whether the Amendments candle holder renderer is enabled.
 zipline tool (an item in the `zipline:attachment` tag, pickaxes by default).
 
 ### `FFF:getZipping()` -> boolean
-`true` while the avatar's player is actually riding a zipline.
+`true` while the avatar's player is riding a zipline. 
+Just acts as `getTryZip()` for other players... sorry.
 ##
 ## ---=== What Are They Up To (WATUP) ===---
 Just a bunch of toggles and checks for if it *would* be rendering. Might be useful for some, as they'd simplify some Figura checks.

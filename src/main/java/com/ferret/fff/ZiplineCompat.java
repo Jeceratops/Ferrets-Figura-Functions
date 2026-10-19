@@ -22,7 +22,13 @@ public final class ZiplineCompat {
     }
 
     public static boolean isZipping(Player player) {
-        if (player == null || !resolve()) {
+        if (player == null) {
+            return false;
+        }
+        if (!player.isLocalPlayer()) {
+            return isTryingToZip(player);
+        }
+        if (!resolve()) {
             return false;
         }
         try {

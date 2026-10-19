@@ -17,7 +17,7 @@
   "figura.docs.fff.setAmmdCandleHolder": "false disables the Amendments candle holder in first and third person.",
 
   "figura.docs.fff.getTryZip": "true while the avatar's player is trying to zipline when holding a zipline tool (an item in the zipline:attachment tag, pickaxes by default).",
-  "figura.docs.fff.getZipping": "true while the avatar's player is actually riding a zipline.",
+  "figura.docs.fff.getZipping": "true while the avatar's player is riding a zipline. Exact only for the local player; Zipline never syncs the attached state. Equals getTryZip() for other players.",
 
   "figura.docs.fff.getWATUTIdleAnimation": "Whether WATUT's idle (AFK) head animation is enabled for this avatar (default true).",
   "figura.docs.fff.setWATUTIdleAnimation": "false stops WATUT from rotating this avatar's head while idle",

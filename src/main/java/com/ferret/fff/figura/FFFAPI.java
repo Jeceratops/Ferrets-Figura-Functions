@@ -354,10 +354,12 @@ public final class FFFAPI implements FiguraAPI {
         if (relative == null) {
             relative = CreateCompat.relativeVelocity(player);
         }
-        if (relative == null) {
-            relative = player.getDeltaMovement();
+        if (relative != null) {
+            return FiguraVec3.of(relative.x, relative.y, relative.z);
         }
-        return FiguraVec3.of(relative.x, relative.y, relative.z);
+
+        EntityAPI<?> vanilla = EntityAPI.wrap(player);
+        return vanilla == null ? null : vanilla.getVelocity();
     }
 
     @LuaWhitelist
