@@ -44,68 +44,7 @@ public final class SableCompat {
     private static Boolean foreignCameraRotationMod;
     private static final Set<UUID> subLevelCameraRotSet = new HashSet<>();
 
-    private static final boolean DEBUG_SPACE = true;
-    private static long lastSpaceLog;
-    private static long lastRayLog;
-
     private SableCompat() {}
-
-    private static void debugRay(final Entity owner, final Vec3 start, final Vec3 end,
-                                 final ClipContext.Block blockType, final ClipContext.Fluid fluidType) {
-        if (!DEBUG_SPACE || owner == null || start == null || end == null || !resolve()) {
-            return;
-        }
-        final long now = System.nanoTime();
-        if (now - lastRayLog < 1_000_000_000L) {
-            return;
-        }
-        lastRayLog = now;
-        try {
-            final Level level = owner.level();
-            final ClipContext context = new ClipContext(start, end, blockType, fluidType,
-                    new Marker(EntityType.MARKER, level));
-            final BlockHitResult sableHit = level.clip(context);
-            final BlockHitResult plainHit = clipIn(level, context);
-            final BlockHitResult fixedHit = projectHitToWorld(level, sableHit);
-            System.out.println("[FFF ray] start=" + start + " end=" + end
-                    + " | sable loc=" + sableHit.getLocation() + " pos=" + sableHit.getBlockPos()
-                    + " len=" + start.distanceTo(sableHit.getLocation())
-                    + " | plain loc=" + plainHit.getLocation() + " pos=" + plainHit.getBlockPos()
-                    + " len=" + start.distanceTo(plainHit.getLocation())
-                    + " | fixed loc=" + fixedHit.getLocation() + " pos=" + fixedHit.getBlockPos()
-                    + " len=" + start.distanceTo(fixedHit.getLocation()));
-        } catch (final Throwable t) {
-            // ignore
-        }
-    }
-
-    private static void debugSpace(final Entity entity, final String tag) {
-        if (!DEBUG_SPACE || entity == null || !resolve()) {
-            return;
-        }
-        final long now = System.nanoTime();
-        if (now - lastSpaceLog < 1_000_000_000L) {
-            return;
-        }
-        lastSpaceLog = now;
-        try {
-            final boolean tracking = SableCompanion.INSTANCE.getTrackingOrVehicleSubLevel(entity) != null;
-            final ClientSubLevelAccess contained = SableCompanion.INSTANCE.getContainingClient(entity);
-            final Vec3 pos = entity.position();
-            System.out.println("[FFF space] " + tag
-                    + " tracking=" + tracking
-                    + " contained=" + (contained != null)
-                    + " pos=" + pos
-                    + " prev=(" + entity.xo + "," + entity.yo + "," + entity.zo + ")"
-                    + " chunk=" + entity.chunkPosition());
-            if (contained != null) {
-                final Vec3 projected = contained.renderPose(1.0F).transformPosition(pos);
-                System.out.println("[FFF space]   renderPose(pos)=" + projected);
-            }
-        } catch (final Throwable t) {
-            // ignore
-        }
-    }
 
     public static boolean isLoaded() {
         resolve();
@@ -292,7 +231,6 @@ public final class SableCompat {
         if (mc.player == null || cameraEntity != mc.player) {
             return;
         }
-        debugSpace(cameraEntity, "camSetup");
 
         try {
             final Avatar avatar = AvatarManager.getAvatar(cameraEntity);
@@ -337,8 +275,6 @@ public final class SableCompat {
         if (owner == null || start == null || end == null || !resolve()) {
             return null;
         }
-        debugSpace(owner, "raycast start=" + start);
-        debugRay(owner, start, end, blockType, fluidType);
         try {
             final Level level = owner.level();
             final ClientSubLevelAccess contained = SableCompanion.INSTANCE.getContainingClient(owner);

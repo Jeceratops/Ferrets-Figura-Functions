@@ -140,8 +140,7 @@ public final class WatutCompat {
             return true;
         }
 
-        return !state.watutTypingTextBox()
-                && status.getPlayerGuiState() == PlayerStatus.PlayerGuiState.CHAT_SCREEN;
+        return !state.watutTypingTextBox() && status.getPlayerGuiState() == PlayerStatus.PlayerGuiState.CHAT_SCREEN;
     }
 
     private static FFFState state(Avatar avatar) {

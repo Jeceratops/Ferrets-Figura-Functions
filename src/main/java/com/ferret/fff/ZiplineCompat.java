@@ -10,8 +10,7 @@ import net.neoforged.fml.ModList;
 
 public final class ZiplineCompat {
 
-    private static final TagKey<Item> ATTACHMENT =
-            TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("zipline", "attachment"));
+    private static final TagKey<Item> ATTACHMENT = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("zipline", "attachment"));
 
     private static boolean resolved;
     private static boolean loaded;
