@@ -26,7 +26,7 @@ I could be arsed! `/Figura Docs Globals FFF FFF` exists now!
 `items` is a table/set of item ids (`FFF:setOffhandPlaceLock({ "minecraft:lantern" })`;
 ids without an indetifier thingy get `minecraft:` prepended). While the avatar is loaded, it blocks
 placeing/using those items in the offhand.
-
+##
 ### ---=== SUPPLEMENTARIES ===---
 ### `FFF:getSuppQuiverVisible()` -> boolean
 Whether the Supplementaries quiver still renders for this avatar.
@@ -63,7 +63,7 @@ zipline tool (an item in the `zipline:attachment` tag, pickaxes by default).
 
 ### `FFF:getZipping()` -> boolean
 `true` while the avatar's player is actually riding a zipline.
-
+##
 ## ---=== What Are They Up To (WATUP) ===---
 Just a bunch of toggles and checks for if it *would* be rendering. Might be useful for some, as they'd simplify some Figura checks.
 
