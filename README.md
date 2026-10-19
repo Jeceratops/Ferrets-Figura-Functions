@@ -134,9 +134,9 @@ Debug helper.
 ##
 ## ---=== Sable ===---
 Just a bunch of functions to make Sable not a PITA with Figura.
-Fixed BP3 Camera with Sable generically
-Fixed Figura Camera with Sable
-OH! also fixes the camera when sitting automatically.
+- Fixed BP3 Camera with Sable generically
+- Fixed Figura Camera with Sable
+- OH! also fixes the camera when sitting automatically.
 Code based on snippit from NikoSolstice on the Figura Discord
 
 #### `FFF:isOnSublevel()` -> boolean
