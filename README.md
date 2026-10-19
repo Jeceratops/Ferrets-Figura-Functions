@@ -1,12 +1,19 @@
 # Ferret's Figura Functions
 
-A Stupid mod made because Ammedments and Supplementaries are stupid, and I wanted this fixed for the Wayfarer modpack. Might expand as needed down the road!
+A Stupid mod made because Ammedments and Supplementaries are stupid, and I wanted this fixed for the Wayfarer modpack. ~~Might expand as needed down the road!~~
+We now support
+- Ammendments
+- Supplumentaries
+- Ziplines: Rezipped!
+- Create
+- Sable
+And still more to come, probably.
 
 ## Usage
 
 ```lua
 if client.isModLoaded("ferrets_figura_functions") then
-    FFF:setAmmdLantern(false) -- disable Amendments lantern so we can load our own model
+    FFF:setAmmdLantern(false) -- disable Amendments lantern so we can load our own model (with Figura's Item_Render)
 end
 ```
 
