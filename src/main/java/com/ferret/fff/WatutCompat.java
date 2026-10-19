@@ -47,8 +47,7 @@ public final class WatutCompat {
             return false;
         }
         PlayerStatus.PlayerChatState chat = status.getPlayerChatState();
-        return chat == PlayerStatus.PlayerChatState.CHAT_FOCUSED
-                || chat == PlayerStatus.PlayerChatState.CHAT_TYPING;
+        return chat == PlayerStatus.PlayerChatState.CHAT_FOCUSED || chat == PlayerStatus.PlayerChatState.CHAT_TYPING;
     }
 
     public static boolean idleAnimationSuppressed(Entity entity) {

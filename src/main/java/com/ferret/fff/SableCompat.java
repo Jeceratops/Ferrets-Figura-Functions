@@ -41,7 +41,7 @@ public final class SableCompat {
 
     private static boolean resolved;
     private static boolean loaded;
-    private static Boolean foreignCameraRotationMod;
+    private static Boolean ughBetter3rdPersonIsAnnoying;
     private static final Set<UUID> subLevelCameraRotSet = new HashSet<>();
 
     private SableCompat() {}
@@ -74,16 +74,16 @@ public final class SableCompat {
         return (T) o;
     }
 
-    public static boolean foreignCameraRotationMod() {
-        if (foreignCameraRotationMod != null) {
-            return foreignCameraRotationMod;
+    public static boolean ughBetter3rdPersonIsAnnoying() {
+        if (ughBetter3rdPersonIsAnnoying != null) {
+            return ughBetter3rdPersonIsAnnoying;
         }
         final ModList modList = ModList.get();
         if (modList == null) {
             return false;
         }
-        foreignCameraRotationMod = modList.isLoaded("betterthirdperson");
-        return foreignCameraRotationMod;
+        ughBetter3rdPersonIsAnnoying = modList.isLoaded("betterthirdperson");
+        return ughBetter3rdPersonIsAnnoying;
     }
 
     public static SubLevelAccess subLevelFor(final Entity entity) {
@@ -145,8 +145,7 @@ public final class SableCompat {
         }
     }
 
-    private static Vec3 subLevelEye(final Entity entity, final float partialTicks,
-                                    final float eyeHeightOld, final float eyeHeight) {
+    private static Vec3 subLevelEye(final Entity entity, final float partialTicks, final float eyeHeightOld, final float eyeHeight) {
         try {
             if (SableCompanion.INSTANCE.getTrackingOrVehicleSubLevel(entity) != null) {
                 return SableCompanion.INSTANCE.getEyePositionInterpolated(entity, partialTicks);
@@ -171,15 +170,12 @@ public final class SableCompat {
         return Double.isFinite(v.x) && Double.isFinite(v.y) && Double.isFinite(v.z);
     }
 
-    public static Vec3 composedCameraPosition(final Entity cameraEntity, final float partialTicks,
-                                               final float eyeHeightOld, final float eyeHeight) {
+    public static Vec3 composedCameraPosition(final Entity cameraEntity, final float partialTicks, final float eyeHeightOld, final float eyeHeight) {
         if (cameraEntity == null || !resolve()) {
             return null;
         }
         try {
-            final boolean onSubLevel =
-                    SableCompanion.INSTANCE.getTrackingOrVehicleSubLevel(cameraEntity) != null
-                            || SableCompanion.INSTANCE.getContainingClient(cameraEntity) != null;
+            final boolean onSubLevel = SableCompanion.INSTANCE.getTrackingOrVehicleSubLevel(cameraEntity) != null || SableCompanion.INSTANCE.getContainingClient(cameraEntity) != null;
             if (!onSubLevel) {
                 return null;
             }
@@ -214,9 +210,7 @@ public final class SableCompat {
                 z = base.z;
             }
 
-            final Vec3 composed = hasOffset
-                    ? new Vec3(x + offset.x, y + offset.y, z + offset.z)
-                    : new Vec3(x, y, z);
+            final Vec3 composed = hasOffset ? new Vec3(x + offset.x, y + offset.y, z + offset.z) : new Vec3(x, y, z);
             return isFinite(composed) ? composed : null;
         } catch (final Throwable t) {
             return null;
@@ -239,18 +233,13 @@ public final class SableCompat {
             }
 
             final Entity vehicle = cameraEntity.getVehicle();
-            if (foreignCameraRotationMod()
-                    && (vehicle == null || vehicle instanceof Horse || vehicle instanceof Pig)) {
-                if (subLevelCameraRotSet.remove(cameraEntity.getUUID())) {
-                    avatar.luaRuntime.renderer.cameraRot = null;
-                }
+            if (ughBetter3rdPersonIsAnnoying() && (vehicle == null || vehicle instanceof Horse || vehicle instanceof Pig)) {
+                if (subLevelCameraRotSet.remove(cameraEntity.getUUID())) {avatar.luaRuntime.renderer.cameraRot = null;}
                 return;
             }
 
             final RendererAPI renderer = avatar.luaRuntime.renderer;
-            final boolean onSubLevel =
-                    SableCompanion.INSTANCE.getTrackingOrVehicleSubLevel(cameraEntity) != null
-                            || SableCompanion.INSTANCE.getContainingClient(cameraEntity) != null;
+            final boolean onSubLevel = SableCompanion.INSTANCE.getTrackingOrVehicleSubLevel(cameraEntity) != null || SableCompanion.INSTANCE.getContainingClient(cameraEntity) != null;
 
             if (onSubLevel) {
                 final boolean backwards = renderer.isCameraBackwards();
@@ -270,8 +259,7 @@ public final class SableCompat {
 
     public record SubLevelHit(BlockHitResult result, BlockState state) {}
 
-    public static SubLevelHit subLevelRaycast(final Entity owner, final Vec3 start, final Vec3 end,
-                                              final ClipContext.Block blockType, final ClipContext.Fluid fluidType) {
+    public static SubLevelHit subLevelRaycast(final Entity owner, final Vec3 start, final Vec3 end, final ClipContext.Block blockType, final ClipContext.Fluid fluidType) {
         if (owner == null || start == null || end == null || !resolve()) {
             return null;
         }
@@ -284,14 +272,12 @@ public final class SableCompat {
                 if (plot == null) {
                     return null;
                 }
-                final ClipContext context = new ClipContext(start, end, blockType, fluidType,
-                        new Marker(EntityType.MARKER, plot));
+                final ClipContext context = new ClipContext(start, end, blockType, fluidType, new Marker(EntityType.MARKER, plot));
                 final BlockHitResult hit = clipIn(plot, context);
                 return new SubLevelHit(hit, plot.getBlockState(hit.getBlockPos()));
             }
 
-            final ClipContext context = new ClipContext(start, end, blockType, fluidType,
-                    new Marker(EntityType.MARKER, level));
+            final ClipContext context = new ClipContext(start, end, blockType, fluidType, new Marker(EntityType.MARKER, level));
             final BlockHitResult hit = level.clip(context);
             return new SubLevelHit(projectHitToWorld(level, hit), level.getBlockState(hit.getBlockPos()));
         } catch (final Throwable t) {
@@ -299,8 +285,7 @@ public final class SableCompat {
         }
     }
 
-    public static EntityHitResult subLevelEntityRaycast(final Entity owner, final Vec3 start, final Vec3 end,
-                                                        final Predicate<Entity> predicate, final double maxDistance) {
+    public static EntityHitResult subLevelEntityRaycast(final Entity owner, final Vec3 start, final Vec3 end, final Predicate<Entity> predicate, final double maxDistance) {
         if (owner == null || start == null || end == null || !resolve()) {
             return null;
         }

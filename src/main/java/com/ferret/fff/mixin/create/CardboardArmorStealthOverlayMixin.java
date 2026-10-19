@@ -14,8 +14,7 @@ public abstract class CardboardArmorStealthOverlayMixin {
 
     @Inject(method = "renderHelmetOverlay(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/player/Player;IIF)V",
             at = @At("HEAD"), cancellable = true)
-    private void fff$hideCardboardOverlay(ItemStack stack, Player player, int width, int height, float partialTick,
-                                          CallbackInfo ci) {
+    private void fff$hideCardboardOverlay(ItemStack stack, Player player, int width, int height, float partialTick, CallbackInfo ci) {
         if (player != null && !CompatVisibility.isCreateCardboardBoxEnabled(player)) {
             ci.cancel();
         }

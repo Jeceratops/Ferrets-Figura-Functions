@@ -17,8 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(targets = "net.mehvahdjukaar.supplementaries.client.renderers.entities.layers.QuiverLayer")
 public abstract class QuiverLayerMixin {
 
-    @Inject(method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;" +
-                    "ILnet/minecraft/world/entity/LivingEntity;FFFFFF)V",
+    @Inject(method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;" + "ILnet/minecraft/world/entity/LivingEntity;FFFFFF)V",
             at = @At("HEAD"), cancellable = true)
     private void fff$checkVisibility(PoseStack poseStack, MultiBufferSource buffer, int packedLight, LivingEntity entity,
                                       float limbSwing, float limbSwingAmount, float partialTick,

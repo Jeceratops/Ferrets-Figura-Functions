@@ -89,8 +89,7 @@ public final class CreateCompat {
             return null;
         }
         AABB search = player.getBoundingBox().inflate(8.0, 6.0, 8.0);
-        List<AbstractContraptionEntity> contraptions =
-                level.getEntitiesOfClass(AbstractContraptionEntity.class, search);
+        List<AbstractContraptionEntity> contraptions = level.getEntitiesOfClass(AbstractContraptionEntity.class, search);
         AbstractContraptionEntity best = null;
         double bestDistSq = Double.MAX_VALUE;
         Vec3 playerPos = player.position();
@@ -143,6 +142,5 @@ public final class CreateCompat {
         return Double.isFinite(vec.x) && Double.isFinite(vec.y) && Double.isFinite(vec.z);
     }
 
-    public record Carried(Vec3 motion, String source) {
-    }
+    public record Carried(Vec3 motion, String source) {}
 }

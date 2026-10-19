@@ -34,9 +34,7 @@ public abstract class PlayerItemInHandLayerCompatMixin<T extends Player, M exten
                     + "Lnet/minecraft/world/item/ItemDisplayContext;Lnet/minecraft/world/entity/HumanoidArm;"
                     + "Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V",
             at = @At("HEAD"), cancellable = true)
-    private void fff$routeHeldItem(LivingEntity entity, ItemStack stack, ItemDisplayContext displayContext,
-                                     HumanoidArm arm, PoseStack poseStack, MultiBufferSource buffer, int light,
-                                     CallbackInfo ci) {
+    private void fff$routeHeldItem(LivingEntity entity, ItemStack stack, ItemDisplayContext displayContext, HumanoidArm arm, PoseStack poseStack, MultiBufferSource buffer, int light, CallbackInfo ci) {
         if (stack.isEmpty()) {
             return;
         }

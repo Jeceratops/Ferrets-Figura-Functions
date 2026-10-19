@@ -23,12 +23,8 @@ public abstract class CameraSetupCompatMixin {
     @Shadow
     protected abstract void setPosition(double x, double y, double z);
 
-    @WrapOperation(
-            method = "setup(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/world/entity/Entity;ZZF)V",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/minecraft/client/Camera;setPosition(DDD)V"
-            )
+    @WrapOperation(method = "setup(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/world/entity/Entity;ZZF)V",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/client/Camera;setPosition(DDD)V" )
     )
     private void fff$composeCameraWithSubLevel(final Camera instance, final double x, final double y, final double z,
                                                final Operation<Void> original,
@@ -43,8 +39,7 @@ public abstract class CameraSetupCompatMixin {
         }
     }
 
-    @org.spongepowered.asm.mixin.injection.Inject(
-            method = "setup(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/world/entity/Entity;ZZF)V",
+    @org.spongepowered.asm.mixin.injection.Inject(method = "setup(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/world/entity/Entity;ZZF)V",
             at = @At("HEAD")
     )
     private void fff$applySubLevelCameraRot(final net.minecraft.world.level.BlockGetter level, final Entity entity,

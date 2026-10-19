@@ -26,8 +26,7 @@ public abstract class CandleHolderRendererExtensionMixin {
                     "Lnet/minecraft/world/entity/HumanoidArm;Lcom/mojang/blaze3d/vertex/PoseStack;" +
                     "Lnet/minecraft/client/renderer/MultiBufferSource;I)V",
             at = @At("HEAD"), cancellable = true)
-    private void fff$hideCandleHolder(EntityModel<?> parentModel, LivingEntity entity, ItemStack stack, HumanoidArm arm,
-                                        PoseStack poseStack, MultiBufferSource buffer, int light, CallbackInfo ci) {
+    private void fff$hideCandleHolder(EntityModel<?> parentModel, LivingEntity entity, ItemStack stack, HumanoidArm arm, PoseStack poseStack, MultiBufferSource buffer, int light, CallbackInfo ci) {
         if (!CompatVisibility.isAmmdCandleHolderEnabled(entity)) {
             ci.cancel();
         }
