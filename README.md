@@ -13,7 +13,7 @@ end
 ## API
 Functions that exist, hopefully useful for someone. ~~I know that TECHNICALLY /figura docs exists, but I honestly cant be arsed.~~
 I could be arsed! `/Figura Docs Globals FFF FFF` exists now!
-
+##
 ## ---=== General ===---
 #### `FFF:setOffhandPlaceLock(items)`
 `items` is a table/set of item ids (`FFF:setOffhandPlaceLock({ "minecraft:lantern" })`;
@@ -29,7 +29,7 @@ Whether the Supplementaries quiver still renders for this avatar.
 
 ### `FFF:setSuppQuiverVisible(visible)`
 `false` disables the Supplementaries `QuiverLayer`
-
+##
 ### ---=== AMMENDMENTS ===---
 ### `FFF:getAmmdLantern()` -> boolean
 Whether the Amendments lantern renderer is enabled.
@@ -48,7 +48,7 @@ Whether the Amendments candle holder renderer is enabled.
 
 ### `FFF:setAmmdCandleHolder(enabled)`
 `false` disables the Amendments candle holder in first and third person.
-
+##
 ## ---=== Zipline: Rezipped! ===---
 ### `FFF:getTryZip()` -> boolean
 `true` while the avatar's player is trying to zipline when holding a
@@ -86,7 +86,7 @@ Whether WATUT's typing chat box is enabled for this avatar (default `true`).
 
 #### `FFF:getWATUTTypingTextBoxWouldRender()` -> boolean
 `true` while the player has chat open.
-
+##
 ## ---=== Create ===---
 Much of the Create integration is borrowed from [JigCompats](https://github.com/soup587/JigCompats)
 by **jess (soup587)**. She gave her permission for me to use it, so I did!
@@ -124,9 +124,11 @@ Number of Create contraption entities near the player.
 Which Create method produced the last carried velocity (`getContactPointMotion`,
 `getMotionOfPoint`, `getContraptionMotion`, or `getDeltaMovement`), or `"none"`.
 Debug helper.
-
+##
 ## ---=== Sable ===---
 Just a bunch of functions to make Sable not a PITA with Figura.
+OH! also fixes the camera when sitting automatically.
+Code based on snippit from NikoSolstice on the Figura Discord
 
 #### `FFF:isOnSublevel()` -> boolean
 `true` while the avatar's player is standing on or riding a Sable sub-level.
