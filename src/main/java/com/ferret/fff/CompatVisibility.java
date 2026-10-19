@@ -27,7 +27,7 @@ public final class CompatVisibility {
 
     public static boolean isSuppQuiverVisible(LivingEntity entity) {
         FFFState state = state(entity);
-        return state == null || state.suppQuiverVisible();
+        return state == null || state.isSuppQuiverVisible();
     }
 
     public static void setNativeQuiverActive(LivingEntity entity, boolean active) {
@@ -43,27 +43,27 @@ public final class CompatVisibility {
 
     public static boolean isAmmdLanternEnabled(LivingEntity entity) {
         FFFState state = state(entity);
-        return state == null || state.ammdLantern();
+        return state == null || state.isAmmdLantern();
     }
 
     public static boolean isAmmdTorchEnabled(LivingEntity entity) {
         FFFState state = state(entity);
-        return state == null || state.ammdTorch();
+        return state == null || state.isAmmdTorch();
     }
 
     public static boolean isAmmdCandleHolderEnabled(LivingEntity entity) {
         FFFState state = state(entity);
-        return state == null || state.ammdCandleHolder();
+        return state == null || state.isAmmdCandleHolder();
     }
 
     public static boolean isCreateSkyhookAnimationEnabled(LivingEntity entity) {
         FFFState state = state(entity);
-        return state == null || state.createSkyhookAnimation();
+        return state == null || state.isCreateSkyhookAnimation();
     }
 
     public static boolean isCreateCardboardBoxEnabled(LivingEntity entity) {
         FFFState state = state(entity);
-        return state == null || state.createCardboardBox();
+        return state == null || state.isCreateCardboardBox();
     }
 
     public static boolean shouldHideCreateBacktank(LivingEntity entity) {

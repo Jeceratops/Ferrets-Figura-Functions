@@ -28,7 +28,7 @@ public abstract class QuiverLayerMixin {
 
             state.setNativeQuiverActive(true);
 
-            if (!state.suppQuiverVisible()) {
+            if (!state.isSuppQuiverVisible()) {
                 ci.cancel();
             }
         }

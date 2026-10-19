@@ -69,11 +69,6 @@ public final class SableCompat {
         return loaded;
     }
 
-    @SuppressWarnings("unchecked")
-    public static <T> T cast(Object o) {
-        return (T) o;
-    }
-
     public static boolean ughBetter3rdPersonIsAnnoying() {
         if (ughBetter3rdPersonIsAnnoying != null) {
             return ughBetter3rdPersonIsAnnoying;

@@ -52,22 +52,22 @@ public final class WatutCompat {
 
     public static boolean idleAnimationSuppressed(Entity entity) {
         FFFState state = state(AvatarManager.getAvatar(entity));
-        return state != null && !state.watutIdleAnimation();
+        return state != null && !state.isWatutIdleAnimation();
     }
 
     public static boolean typingAnimationSuppressed(Entity entity) {
         FFFState state = state(AvatarManager.getAvatar(entity));
-        return state != null && !state.watutTypingAnimation();
+        return state != null && !state.isWatutTypingAnimation();
     }
 
     public static boolean typingAnimationSuppressedByUuid(UUID uuid) {
         FFFState state = state(AvatarManager.getAvatarForPlayer(uuid));
-        return state != null && !state.watutTypingAnimation();
+        return state != null && !state.isWatutTypingAnimation();
     }
 
     public static boolean typingTextBoxSuppressed(Player player) {
         FFFState state = state(AvatarManager.getAvatar(player));
-        if (state == null || state.watutTypingTextBox()) {
+        if (state == null || state.isWatutTypingTextBox()) {
             return false;
         }
         PlayerStatus status = status(player);
@@ -135,11 +135,11 @@ public final class WatutCompat {
             return false;
         }
 
-        if (!state.watutIdleAnimation() && status.isIdle()) {
+        if (!state.isWatutIdleAnimation() && status.isIdle()) {
             return true;
         }
 
-        return !state.watutTypingTextBox() && status.getPlayerGuiState() == PlayerStatus.PlayerGuiState.CHAT_SCREEN;
+        return !state.isWatutTypingTextBox() && status.getPlayerGuiState() == PlayerStatus.PlayerGuiState.CHAT_SCREEN;
     }
 
     private static FFFState state(Avatar avatar) {

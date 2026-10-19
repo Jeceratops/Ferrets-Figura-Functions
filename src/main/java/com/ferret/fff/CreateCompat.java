@@ -7,7 +7,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.fml.ModList;
 
 import java.util.List;
 import java.util.Set;
@@ -32,8 +31,12 @@ public final class CreateCompat {
             return loaded;
         }
         resolved = true;
-        ModList modList = ModList.get();
-        loaded = modList != null && modList.isLoaded("create");
+        try {
+            Class.forName("com.simibubi.create.Create");
+            loaded = true;
+        } catch (final Throwable t) {
+            loaded = false;
+        }
         return loaded;
     }
 

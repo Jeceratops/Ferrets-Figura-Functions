@@ -17,7 +17,7 @@ public final class FFFState {
     private boolean createSkyhookAnimation = true;
     private boolean createCardboardBox = true;
 
-    public boolean suppQuiverVisible() {
+    public boolean isSuppQuiverVisible() {
         return this.suppQuiverVisible;
     }
 
@@ -37,15 +37,15 @@ public final class FFFState {
         this.suppQuiverVisible = state;
     }
 
-    public boolean ammdLantern() {
+    public boolean isAmmdLantern() {
         return this.ammdLantern;
     }
 
-    public boolean ammdTorch() {
+    public boolean isAmmdTorch() {
         return this.ammdTorch;
     }
 
-    public boolean ammdCandleHolder() {
+    public boolean isAmmdCandleHolder() {
         return this.ammdCandleHolder;
     }
 
@@ -61,7 +61,7 @@ public final class FFFState {
         this.ammdCandleHolder = state;
     }
 
-    public boolean watutIdleAnimation() {
+    public boolean isWatutIdleAnimation() {
         return this.watutIdleAnimation;
     }
 
@@ -69,7 +69,7 @@ public final class FFFState {
         this.watutIdleAnimation = state;
     }
 
-    public boolean watutTypingAnimation() {
+    public boolean isWatutTypingAnimation() {
         return this.watutTypingAnimation;
     }
 
@@ -77,7 +77,7 @@ public final class FFFState {
         this.watutTypingAnimation = state;
     }
 
-    public boolean watutTypingTextBox() {
+    public boolean isWatutTypingTextBox() {
         return this.watutTypingTextBox;
     }
 
@@ -85,7 +85,7 @@ public final class FFFState {
         this.watutTypingTextBox = state;
     }
 
-    public boolean createSkyhookAnimation() {
+    public boolean isCreateSkyhookAnimation() {
         return this.createSkyhookAnimation;
     }
 
@@ -93,7 +93,7 @@ public final class FFFState {
         this.createSkyhookAnimation = state;
     }
 
-    public boolean createCardboardBox() {
+    public boolean isCreateCardboardBox() {
         return this.createCardboardBox;
     }
 

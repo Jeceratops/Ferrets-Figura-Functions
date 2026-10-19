@@ -82,7 +82,7 @@ public final class FFFAPI implements FiguraAPI {
    @LuaWhitelist
    @LuaMethodDoc(value = "fff.getSuppQuiverVisible", overloads = @LuaMethodOverload(returnType = Boolean.class))
    public boolean getSuppQuiverVisible() {
-      return this.state == null || this.state.suppQuiverVisible();
+      return this.state == null || this.state.isSuppQuiverVisible();
    }
 
    @LuaWhitelist
@@ -104,7 +104,7 @@ public final class FFFAPI implements FiguraAPI {
     @LuaWhitelist
     @LuaMethodDoc(value = "fff.getAmmdLantern", overloads = @LuaMethodOverload(returnType = Boolean.class))
     public boolean getAmmdLantern() {
-        return this.state == null || this.state.ammdLantern();
+        return this.state == null || this.state.isAmmdLantern();
     }
 
     @LuaWhitelist
@@ -119,7 +119,7 @@ public final class FFFAPI implements FiguraAPI {
     @LuaWhitelist
     @LuaMethodDoc(value = "fff.getAmmdTorch", overloads = @LuaMethodOverload(returnType = Boolean.class))
     public boolean getAmmdTorch() {
-        return this.state == null || this.state.ammdTorch();
+        return this.state == null || this.state.isAmmdTorch();
     }
 
     @LuaWhitelist
@@ -134,7 +134,7 @@ public final class FFFAPI implements FiguraAPI {
     @LuaWhitelist
     @LuaMethodDoc(value = "fff.getAmmdCandleHolder", overloads = @LuaMethodOverload(returnType = Boolean.class))
     public boolean getAmmdCandleHolder() {
-        return this.state == null || this.state.ammdCandleHolder();
+        return this.state == null || this.state.isAmmdCandleHolder();
     }
 
     @LuaWhitelist
@@ -166,7 +166,7 @@ public final class FFFAPI implements FiguraAPI {
     @LuaWhitelist
     @LuaMethodDoc(value = "fff.getWATUTIdleAnimation", overloads = @LuaMethodOverload(returnType = Boolean.class))
     public boolean getWATUTIdleAnimation() {
-        return this.state == null || this.state.watutIdleAnimation();
+        return this.state == null || this.state.isWatutIdleAnimation();
     }
 
     @LuaWhitelist
@@ -187,7 +187,7 @@ public final class FFFAPI implements FiguraAPI {
     @LuaWhitelist
     @LuaMethodDoc(value = "fff.getWATUTTypingAnimation", overloads = @LuaMethodOverload(returnType = Boolean.class))
     public boolean getWATUTTypingAnimation() {
-        return this.state == null || this.state.watutTypingAnimation();
+        return this.state == null || this.state.isWatutTypingAnimation();
     }
 
     @LuaWhitelist
@@ -208,7 +208,7 @@ public final class FFFAPI implements FiguraAPI {
     @LuaWhitelist
     @LuaMethodDoc(value = "fff.getWATUTTypingTextBox", overloads = @LuaMethodOverload(returnType = Boolean.class))
     public boolean getWATUTTypingTextBox() {
-        return this.state == null || this.state.watutTypingTextBox();
+        return this.state == null || this.state.isWatutTypingTextBox();
     }
 
     @LuaWhitelist
@@ -229,7 +229,7 @@ public final class FFFAPI implements FiguraAPI {
     @LuaWhitelist
     @LuaMethodDoc(value = "fff.getCreateSkyhookAnimation", overloads = @LuaMethodOverload(returnType = Boolean.class))
     public boolean getCreateSkyhookAnimation() {
-        return this.state == null || this.state.createSkyhookAnimation();
+        return this.state == null || this.state.isCreateSkyhookAnimation();
     }
 
     @LuaWhitelist
@@ -244,7 +244,7 @@ public final class FFFAPI implements FiguraAPI {
     @LuaWhitelist
     @LuaMethodDoc(value = "fff.getCreateCardboardBox", overloads = @LuaMethodOverload(returnType = Boolean.class))
     public boolean getCreateCardboardBox() {
-        return this.state == null || this.state.createCardboardBox();
+        return this.state == null || this.state.isCreateCardboardBox();
     }
 
     @LuaWhitelist
