@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8.5",
+  "package": "com.ferret.fff.mixin.watut",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+    "PlayerStatusManagerClientMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

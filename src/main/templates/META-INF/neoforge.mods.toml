@@ -1,0 +1,113 @@
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="${mod_license}"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+description=''' Heheh... Yuri... Based...
+A Figura mod that does alot of things in alot of ways:tm:
+Compat for
+    - supplementaries
+    - amendments
+    - watut
+    - ziplines rezipped
+    - create
+    - annnd more to come in the future likely!
+
+Most of the Create integration is ported from JigCompats by jess (soup587).
+https://github.com/soup587/JigCompats
+
+Big credits to her!
+'''
+
+[[mixins]]
+config="ferrets_figura_functions.mixins.json"
+side="CLIENT"
+
+[[mixins]]
+config="ferrets_figura_functions.supplementaries.mixins.json"
+requiredMods=["supplementaries"]
+side="CLIENT"
+
+[[mixins]]
+config="ferrets_figura_functions.amendments.mixins.json"
+requiredMods=["amendments"]
+side="CLIENT"
+
+[[mixins]]
+config="ferrets_figura_functions.moonlight.mixins.json"
+requiredMods=["moonlight"]
+side="CLIENT"
+
+[[mixins]]
+config="ferrets_figura_functions.watut.mixins.json"
+requiredMods=["watut"]
+side="CLIENT"
+
+[[mixins]]
+config="ferrets_figura_functions.create.mixins.json"
+requiredMods=["create"]
+side="CLIENT"
+
+[[mixins]]
+config="ferrets_figura_functions.sable.mixins.json"
+requiredMods=["sable"]
+side="CLIENT"
+
+[[dependencies.${mod_id}]]
+    modId="neoforge"
+    type="required"
+    versionRange="[${neo_version},)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="minecraft"
+    type="required"
+    versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="figura"
+    type="required"
+    versionRange="[0.1.6,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="moonlight"
+    type="optional"
+    versionRange="[1.21,)"
+    ordering="AFTER"
+    side="CLIENT"
+
+[[dependencies.${mod_id}]]
+    modId="amendments"
+    type="optional"
+    versionRange="[1.21,)"
+    ordering="AFTER"
+    side="CLIENT"
+
+[[dependencies.${mod_id}]]
+    modId="supplementaries"
+    type="optional"
+    versionRange="[1.21,)"
+    ordering="AFTER"
+    side="CLIENT"
+
+[[dependencies.${mod_id}]]
+    modId="create"
+    type="optional"
+    versionRange="[6.0,)"
+    ordering="AFTER"
+    side="CLIENT"
+
+[[dependencies.${mod_id}]]
+    modId="sable"
+    type="optional"
+    versionRange="[2.0,)"
+    ordering="AFTER"
+    side="CLIENT"

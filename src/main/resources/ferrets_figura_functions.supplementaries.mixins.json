@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8.5",
+  "package": "com.ferret.fff.mixin.supplementaries",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+    "QuiverLayerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

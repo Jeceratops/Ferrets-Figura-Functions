@@ -1,0 +1,36 @@
+# Gradle
+.gradle/
+build/
+out/
+!gradle/wrapper/gradle-wrapper.jar
+
+# NeoForge runtime dirs
+run/
+logs/
+
+# Generated sources
+src/generated/
+
+# IDE - IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# IDE - Eclipse
+.classpath
+.project
+.settings/
+bin/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local dependency jars (built locally - see libs/README.md)
+libs/*.jar
+
+# Misc
+*.log
+hs_err_*.log
+replay_pid*.log
