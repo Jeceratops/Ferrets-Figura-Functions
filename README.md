@@ -17,7 +17,7 @@ if client.isModLoaded("ferrets_figura_functions") then
 end
 ```
 
-IF YOU ARE TOO LAZY TO DO A BUNCH OF YOU OWN WORK
+IF YOU ARE TOO LAZY TO DO A BUNCH OF YOU OWN WORK-  
 Check out the "Funny Code Snippits!" folder in this repo for useful code snippits using Ferrets Figura Functions!
 
 ## API
