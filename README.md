@@ -17,6 +17,9 @@ if client.isModLoaded("ferrets_figura_functions") then
 end
 ```
 
+IF YOU ARE TOO LAZY TO DO A BUNCH OF YOU OWN WORK
+Check out the "Funny Code Snippits!" folder in this repo for useful code snippits using Ferrets Figura Functions!
+
 ## API
 Functions that exist, hopefully useful for someone. ~~I know that TECHNICALLY /figura docs exists, but I honestly cant be arsed.~~
 I could be arsed! `/Figura Docs Globals FFF FFF` exists now!
