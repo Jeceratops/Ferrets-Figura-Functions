@@ -7,6 +7,7 @@ We now support
 - Ziplines: Rezipped!
 - Create
 - Sable
+- Exposure
 And still more to come, probably.
 
 ## Usage
@@ -25,9 +26,6 @@ Functions that exist, hopefully useful for someone. ~~I know that TECHNICALLY /f
 I could be arsed! `/Figura Docs Globals FFF FFF` exists now!
 ##
 ## ---=== General ===---
-#### `FFF:isTakingPhoto()` -> boolean
-Returns whether Exposure is currently capturing a screenshot. Returns `false` when Exposure is not installed.
-
 #### `FFF:setOffhandPlaceLock(items)`
 `items` is a table/set of item ids (`FFF:setOffhandPlaceLock({ "minecraft:lantern" })`;
 ids without an indetifier thingy get `minecraft:` prepended). While the avatar is loaded, it blocks
@@ -180,3 +178,7 @@ when not on a sublevel
 #### `FFF:subLevelAabbRaycast(x, y, z, x2, y2, z2, aabbs)`
 `raycast.aabb` but for Sublevels. Works exactly like `raycast.aabb`
 when not on a sublevel
+
+## ---=== Exposure ===---
+#### `FFF:isTakingPhoto()` -> boolean
+Returns whether Exposure is currently capturing a screenshot.
