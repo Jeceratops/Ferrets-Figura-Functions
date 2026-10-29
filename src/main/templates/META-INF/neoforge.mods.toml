@@ -56,6 +56,11 @@ config="ferrets_figura_functions.sable.mixins.json"
 requiredMods=["sable"]
 side="CLIENT"
 
+[[mixins]]
+config="ferrets_figura_functions.exposure.mixins.json"
+requiredMods=["exposure"]
+side="CLIENT"
+
 [[dependencies.${mod_id}]]
     modId="neoforge"
     type="required"

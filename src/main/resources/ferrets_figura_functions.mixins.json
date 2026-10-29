@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "client": [
     "OffhandPlaceLockMixin",
+    "RenderTypesMixin",
     "docs.FiguraDocsManagerMixin",
     "docs.FiguraGlobalsDocsMixin"
   ],

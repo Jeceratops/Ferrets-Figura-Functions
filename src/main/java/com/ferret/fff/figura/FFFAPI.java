@@ -40,6 +40,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import java.util.UUID;
 import java.util.function.Predicate;
 
 @LuaWhitelist
@@ -170,6 +171,12 @@ public final class FFFAPI implements FiguraAPI {
     }
 
     @LuaWhitelist
+    @LuaMethodDoc(value = "fff.isTakingPhoto", overloads = @LuaMethodOverload(returnType = Boolean.class))
+    public boolean isTakingPhoto() {
+        return com.ferret.fff.exposure.ExposureCompat.isTakingPhoto();
+    }
+
+    @LuaWhitelist
     @LuaMethodDoc(value = "fff.setWATUTIdleAnimation", overloads = @LuaMethodOverload(argumentTypes = {Boolean.class}, returnType = FFFAPI.class))
     public FFFAPI setWATUTIdleAnimation(boolean play) {
         if (this.state != null) {
@@ -200,9 +207,37 @@ public final class FFFAPI implements FiguraAPI {
     }
 
     @LuaWhitelist
-    @LuaMethodDoc(value = "fff.getWATUTTypingAnimationWouldPlay", overloads = @LuaMethodOverload(returnType = Boolean.class))
-    public boolean getWATUTTypingAnimationWouldPlay() {
-        return WatutCompat.typingAnimationWouldPlay(this.player());
+    @LuaMethodDoc(value = "fff.getWATUTChatOpen", overloads = @LuaMethodOverload(returnType = Boolean.class))
+    public boolean getWATUTChatOpen() {
+        return WatutCompat.chatOpen(this.player());
+    }
+
+    @LuaWhitelist
+    @LuaMethodDoc(value = "fff.getWATUTChatHasText", overloads = @LuaMethodOverload(returnType = Boolean.class))
+    public boolean getWATUTChatHasText() {
+        return WatutCompat.chatHasText(this.player());
+    }
+
+    @LuaWhitelist
+    @LuaMethodDoc(value = "fff.getWATUTChatTyping", overloads = @LuaMethodOverload(returnType = Boolean.class))
+    public boolean getWATUTChatTyping() {
+        return WatutCompat.chatTyping(this.player());
+    }
+
+    @LuaWhitelist
+    @LuaMethodDoc(value = "fff.getWATUTChatTypingFor", overloads = @LuaMethodOverload(argumentTypes = {String.class}, returnType = Boolean.class))
+    public boolean getWATUTChatTypingFor(String uuid) {
+        try {
+            return WatutCompat.chatTyping(UUID.fromString(uuid));
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+    }
+
+    @LuaWhitelist
+    @LuaMethodDoc(value = "fff.getWATUTChatTypingSpeed", overloads = @LuaMethodOverload(returnType = Float.class))
+    public float getWATUTChatTypingSpeed() {
+        return WatutCompat.chatTypingSpeed(this.player());
     }
 
     @LuaWhitelist

@@ -36,12 +36,55 @@ public final class WatutCompat {
         return status != null && status.isIdle();
     }
 
-    public static boolean typingAnimationWouldPlay(Player player) {
+    public static boolean chatOpen(Player player) {
+        if (!isLoaded()) {
+            return false;
+        }
+        PlayerStatus status = status(player);
+        return status != null && status.getPlayerGuiState() == PlayerStatus.PlayerGuiState.CHAT_SCREEN;
+    }
+
+    public static boolean chatHasText(Player player) {
+        if (!isLoaded()) {
+            return false;
+        }
         PlayerStatus status = status(player);
         return status != null && status.getPlayerChatState() == PlayerStatus.PlayerChatState.CHAT_TYPING;
     }
 
+    public static boolean chatTyping(Player player) {
+        if (!isLoaded()) {
+            return false;
+        }
+        PlayerStatus status = status(player);
+        return status != null && status.getTypingAmplifier() > 0.0F;
+    }
+
+    public static boolean chatTyping(UUID uuid) {
+        if (!isLoaded() || uuid == null) {
+            return false;
+        }
+        try {
+            PlayerStatusManager manager = WatutMod.getPlayerStatusManagerClient();
+            PlayerStatus status = manager == null ? null : manager.getStatus(uuid);
+            return status != null && status.getTypingAmplifier() > 0.0F;
+        } catch (RuntimeException | LinkageError e) {
+            return false;
+        }
+    }
+
+    public static float chatTypingSpeed(Player player) {
+        if (!isLoaded()) {
+            return 0.0F;
+        }
+        PlayerStatus status = status(player);
+        return status == null ? 0.0F : status.getTypingAmplifier();
+    }
+
     public static boolean typingTextBoxWouldRender(Player player) {
+        if (!isLoaded()) {
+            return false;
+        }
         PlayerStatus status = status(player);
         if (status == null || status.getPlayerGuiState() != PlayerStatus.PlayerGuiState.CHAT_SCREEN) {
             return false;

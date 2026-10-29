@@ -17,7 +17,7 @@ if client.isModLoaded("ferrets_figura_functions") then
 end
 ```
 
-IF YOU ARE TOO LAZY TO DO A BUNCH OF YOU OWN WORK-  
+IF YOU ARE TOO LAZY TO DO A BUNCH OF YOU OWN WORK-
 Check out the "Funny Code Snippits!" folder in this repo for useful code snippits using Ferrets Figura Functions!
 
 ## API
@@ -25,6 +25,9 @@ Functions that exist, hopefully useful for someone. ~~I know that TECHNICALLY /f
 I could be arsed! `/Figura Docs Globals FFF FFF` exists now!
 ##
 ## ---=== General ===---
+#### `FFF:isTakingPhoto()` -> boolean
+Returns whether Exposure is currently capturing a screenshot. Returns `false` when Exposure is not installed.
+
 #### `FFF:setOffhandPlaceLock(items)`
 `items` is a table/set of item ids (`FFF:setOffhandPlaceLock({ "minecraft:lantern" })`;
 ids without an indetifier thingy get `minecraft:` prepended). While the avatar is loaded, it blocks
@@ -65,7 +68,7 @@ Whether the Amendments candle holder renderer is enabled.
 zipline tool (an item in the `zipline:attachment` tag, pickaxes by default).
 
 ### `FFF:getZipping()` -> boolean
-`true` while the avatar's player is riding a zipline. 
+`true` while the avatar's player is riding a zipline.
 Just acts as `getTryZip()` for other players... sorry.
 ##
 ## ---=== What Are They Up To (WATUP) ===---
@@ -86,8 +89,20 @@ Whether WATUT's typing arm animation is enabled for this avatar (default `true`)
 #### `FFF:setWATUTTypingAnimation(play)`
 `false` stops WATUT from animating this avatar's arms while typing.
 
-#### `FFF:getWATUTTypingAnimationWouldPlay()` -> boolean
-`true` while the player is typing in chat.
+#### `FFF:getWATUTChatOpen()` -> boolean
+`true` while the player has the chat screen open.
+
+#### `FFF:getWATUTChatHasText()` -> boolean
+`true` while WATUT reports text in the chat box.
+
+#### `FFF:getWATUTChatTyping()` -> boolean
+`true` while WATUT's typing amplifier is greater than zero.
+
+#### `FFF:getWATUTChatTypingFor(uuid)` -> boolean
+Checks another player's synchronized WATUT typing amplifier by UUID.
+
+#### `FFF:getWATUTChatTypingSpeed()` -> number
+Returns WATUT's synchronized typing amplifier.
 
 #### `FFF:getWATUTTypingTextBox()` -> boolean
 Whether WATUT's typing chat box is enabled for this avatar (default `true`).
