@@ -67,11 +67,11 @@ public final class CreateCompat {
         if (player == null || !resolve()) {
             return null;
         }
-        AbstractContraptionEntity contraption = findCarrier(player.level(), player);
-        if (contraption == null) {
+        Carrier carrier = findCarrierWithContact(player.level(), player);
+        if (carrier == null) {
             return null;
         }
-        return new Carried(contraption.getContactPointMotion(player.position()), "getContactPointMotion");
+        return new Carried(carrier.entity().getContactPointMotion(carrier.contactPoint()), "getContactPointMotion");
     }
 
     public static int contraptionCount(Entity player) {
@@ -88,9 +88,44 @@ public final class CreateCompat {
     }
 
     public static AbstractContraptionEntity findCarrier(Level level, Entity player) {
+        Carrier carrier = findCarrierWithContact(level, player);
+        return carrier == null ? null : carrier.entity();
+    }
+
+    public static Carrier findCarrierWithContact(Level level, Entity player) {
         if (level == null || player == null) {
             return null;
         }
+
+        Carrier riding = ridingCarrier(player);
+        if (riding != null) {
+            return riding;
+        }
+
+        if (level.isClientSide) {
+            try {
+                return CreateClientCompat.findStandingCarrier(level, player);
+            } catch (RuntimeException | LinkageError ignored) {
+            }
+        }
+
+        AbstractContraptionEntity fallback = findCarrierFallback(level, player);
+        return fallback == null ? null : new Carrier(fallback, player.position());
+    }
+
+    private static Carrier ridingCarrier(Entity player) {
+        Entity vehicle = player.getVehicle();
+        int depth = 0;
+        while (vehicle != null && depth++ < 8) {
+            if (vehicle instanceof AbstractContraptionEntity contraption) {
+                return new Carrier(contraption, player.position());
+            }
+            vehicle = vehicle.getVehicle();
+        }
+        return null;
+    }
+
+    private static AbstractContraptionEntity findCarrierFallback(Level level, Entity player) {
         AABB search = player.getBoundingBox().inflate(8.0, 6.0, 8.0);
         List<AbstractContraptionEntity> contraptions = level.getEntitiesOfClass(AbstractContraptionEntity.class, search);
         AbstractContraptionEntity best = null;
@@ -127,11 +162,11 @@ public final class CreateCompat {
         if (player == null || !resolve()) {
             return null;
         }
-        AbstractContraptionEntity contraption = findCarrier(player.level(), player);
-        if (contraption == null) {
+        Carrier carrier = findCarrierWithContact(player.level(), player);
+        if (carrier == null) {
             return null;
         }
-        Vec3 contactMotion = contraption.getContactPointMotion(player.position());
+        Vec3 contactMotion = carrier.entity().getContactPointMotion(carrier.contactPoint());
         Vec3 worldMove = player.position().subtract(new Vec3(player.xo, player.yo, player.zo));
         Vec3 relative = worldMove.subtract(contactMotion);
 
@@ -144,6 +179,8 @@ public final class CreateCompat {
     private static boolean isFinite(Vec3 vec) {
         return Double.isFinite(vec.x) && Double.isFinite(vec.y) && Double.isFinite(vec.z);
     }
+
+    public record Carrier(AbstractContraptionEntity entity, Vec3 contactPoint) {}
 
     public record Carried(Vec3 motion, String source) {}
 }
