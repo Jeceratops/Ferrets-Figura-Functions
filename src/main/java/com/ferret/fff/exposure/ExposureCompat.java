@@ -2,8 +2,14 @@ package com.ferret.fff.exposure;
 
 import net.neoforged.fml.ModList;
 
+import java.lang.reflect.Method;
+
 public final class ExposureCompat {
+    public static final String SCREENSHOT_RENDER_MODE = "EXPOSURE_SCREENSHOT";
+
     private static Boolean loaded;
+    private static boolean captureMethodResolved;
+    private static Method captureMethod;
 
     private ExposureCompat() {}
 
@@ -14,18 +20,34 @@ public final class ExposureCompat {
         return loaded;
     }
 
+    public static String renderContext(String original) {
+        return isTakingPhoto() ? SCREENSHOT_RENDER_MODE : original;
+    }
+
     public static boolean isTakingPhoto() {
-        if (!isLoaded() || ExposurePhotoState.isCapturing()) {
-            return ExposurePhotoState.isCapturing();
+        if (!isLoaded()) {
+            return false;
+        }
+        return ExposurePhotoState.isCapturing() || externalCapturing();
+    }
+
+    private static boolean externalCapturing() {
+        if (!captureMethodResolved) {
+            captureMethodResolved = true;
+            try {
+                Class<?> cls = Class.forName("io.github.mortuusars.exposure.client.capture.task.BackgroundScreenshotCaptureTask");
+                captureMethod = cls.getMethod("isCapturing");
+            } catch (Throwable ignored) {
+                captureMethod = null;
+            }
+        }
+        if (captureMethod == null) {
+            return false;
         }
         try {
-            Class<?> cls = Class.forName("io.github.mortuusars.exposure.client.capture.task.BackgroundScreenshotCaptureTask");
-            Object result = cls.getMethod("isCapturing").invoke(null);
-            if (result instanceof Boolean capturing && capturing) {
-                return true;
-            }
+            return Boolean.TRUE.equals(captureMethod.invoke(null));
         } catch (Throwable ignored) {
+            return false;
         }
-        return ExposurePhotoState.isCapturing();
     }
 }

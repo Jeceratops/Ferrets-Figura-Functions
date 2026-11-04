@@ -7,7 +7,9 @@
     "OffhandPlaceLockMixin",
     "RenderTypesMixin",
     "docs.FiguraDocsManagerMixin",
-    "docs.FiguraGlobalsDocsMixin"
+    "docs.FiguraGlobalsDocsMixin",
+    "figura.AvatarRenderContextMixin",
+    "figura.ImmediateRendererRenderContextMixin"
   ],
   "injectors": {
     "defaultRequire": 1

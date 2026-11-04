@@ -182,3 +182,11 @@ when not on a sublevel
 ## ---=== Exposure ===---
 #### `FFF:isTakingPhoto()` -> boolean
 Returns whether Exposure is currently capturing a screenshot.
+
+During a capture, Figura render context becomes `EXPOSURE_SCREENSHOT` allowing for-:
+
+```lua
+function events.render(_, context)
+    models.myModel:setVisible(context ~= "EXPOSURE_SCREENSHOT")
+end
+```
